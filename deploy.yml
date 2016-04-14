@@ -1,0 +1,6 @@
+---
+ - hosts: local-vms
+   user: vagrant
+   become: yes
+   tasks:
+     - include: tasks/install_nginx.yml

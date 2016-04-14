@@ -1,0 +1,11 @@
+# ./ansible-nginx/tasks/install_nginx.yml
+ 
+- name: NGINX | Installing NGINX
+  apt:
+    pkg: nginx
+    state: latest
+ 
+- name: NGINX | Starting NGINX
+  service:
+    name: nginx
+    state: started

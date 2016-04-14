@@ -1,0 +1,21 @@
+# ansible-php/plabooks/deploy_app.yml
+- name: create /var/www/ directory
+  file: dest=/var/www/ state=directory owner=www-data group=www-data mode=0700
+
+- name: create /var/www/.ssh/ directory
+  file: dest=/var/www/.ssh/ state=directory owner=www-data group=www-data mode=0700
+
+- name: copy private ssh key
+  copy: src=deploy_rsa dest=/var/www/.ssh/id_rsa owner=www-data group=www-data mode=0600
+
+- name: Clone git repository
+  git: >
+    dest=/var/www/test
+    repo=https://tmukherjee13@bitbucket.org/tmukherjee13/test.git
+    update=no
+    accept_hostkey=True
+  become: yes
+  become_user: www-data
+  register: cloned
+
+

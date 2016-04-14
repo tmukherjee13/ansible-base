@@ -3,8 +3,8 @@
     user: vagrant
     become: yes
     tasks:
-     # - include: tasks/install_nginx.yml
-     - include: tasks/install_php.yml
+     # - include: playbooks/install_nginx.yml
+     - include: playbooks/install_php.yml
 
     handlers:
       - name: restart php5-fpm

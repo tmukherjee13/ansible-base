@@ -1,6 +1,15 @@
 ---
- - hosts: local-vms
-   user: vagrant
-   become: yes
-   tasks:
-     - include: tasks/install_nginx.yml
+  - hosts: local-vms
+    user: vagrant
+    become: yes
+    tasks:
+     # - include: tasks/install_nginx.yml
+     - include: tasks/install_php.yml
+
+    handlers:
+      - name: restart php5-fpm
+        service: name=php5-fpm state=restarted
+
+      - name: restart nginx
+        service: name=nginx state=restarted
+

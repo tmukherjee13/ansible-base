@@ -1,0 +1,18 @@
+# ./ansible-nginx/tasks/install_apache.yml
+ 
+- name: apache | Installing apache
+  apt:
+    pkg: apache2
+    state: latest
+
+- name: postgre | Installing apache
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+    - postgresql
+    - postgresql-contrib
+
+
+- name: apache | Starting apache
+  service:
+    name: apache2
+    state: started

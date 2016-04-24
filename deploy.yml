@@ -5,12 +5,13 @@
     tasks:
      # - include: playbooks/install_nginx.yml
      # - include: playbooks/install_php.yml
-     - include: playbooks/deploy_app.yml
+     # - include: playbooks/deploy_app.yml
+     - include: playbooks/install_apache.yml
 
-    handlers:
-      - name: restart php5-fpm
-        service: name=php5-fpm state=restarted
+    # handlers:
+    #   - name: restart php5-fpm
+    #     service: name=php5-fpm state=restarted
 
-      - name: restart nginx
-        service: name=nginx state=restarted
+    #   - name: restart nginx
+    #     service: name=nginx state=restarted
 

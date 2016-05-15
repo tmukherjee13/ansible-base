@@ -1,2 +1,2 @@
-# ansible-php
-Ansible Playbooks to deploy php application
+# ansible
+Ansible Playbooks collection to setup and secure linux box

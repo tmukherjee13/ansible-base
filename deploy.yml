@@ -5,8 +5,9 @@
     tasks:
      # - include: playbooks/install_nginx.yml
      # - include: playbooks/install_php.yml
-     # - include: playbooks/deploy_app.yml
-     - include: playbooks/install_apache.yml
+     - include: playbooks/deploy_app.yml
+     # - include: playbooks/install_apache.yml
+     # - include: playbooks/install_postgre.yml
 
     # handlers:
     #   - name: restart php5-fpm

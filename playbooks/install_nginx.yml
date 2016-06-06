@@ -4,6 +4,7 @@
   apt:
     pkg: nginx
     state: latest
+    update-cache: true
  
 - name: NGINX | Starting NGINX
   service:

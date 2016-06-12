@@ -1,3 +1,4 @@
-user: deb
+username: tarun
 password: InuZ6/HkJkYOA
+public_key: ~/.ssh/id_rsa.pub
 sftp_user: 

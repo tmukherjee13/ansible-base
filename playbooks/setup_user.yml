@@ -1,5 +1,0 @@
-# ./ansible/tasks/install_postgre.yml
-
-- name: Create user account | Setup User
-  user: name={{ user }} comment="Account for {{ user }}" password={{ password }} shell=/bin/bash home=/home/{{ user }} groups="sudo"
-  # user: name={{ user }} state=absent

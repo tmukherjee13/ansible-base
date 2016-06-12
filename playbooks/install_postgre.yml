@@ -1,7 +1,0 @@
-# ./ansible-nginx/tasks/install_postgre.yml
-
-- name: postgre | Installing apache
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-    - postgresql
-    - postgresql-contrib

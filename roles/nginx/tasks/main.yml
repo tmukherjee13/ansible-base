@@ -1,7 +1,7 @@
 ---
-- name: Install Nginx
-  apt:
-    name: nginx
-    state: latest
-    force: yes
-    update_cache: yes
+- include: debian.yml
+  when: ansible_distribution == "Ubuntu"
+
+- include: centos.yml
+  # when: ansible_distribution == "RedHat"
+  when: ansible_distribution == "CentOS"

@@ -1,18 +1,7 @@
 ---
-- name: Install Firewall
-  apt:
-    name: ufw
-    state: latest
-    update_cache: yes
 
-- name: Enable Firewall
-  ufw: state=enabled policy=deny
+- include: debian.yml
+  when: ansible_distribution == "Ubuntu"
 
-- name: Allow HTTP
-  ufw: rule=allow port=80 proto=tcp
-
-- name: Allow HTTPS
-  ufw: rule=allow port=443 proto=tcp
-
-- name: Allow SSH
-  ufw: rule=allow port=22 proto=tcp
+- include: centos.yml
+  when: ansible_distribution == "CentOS"

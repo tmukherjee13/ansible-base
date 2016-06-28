@@ -6,7 +6,7 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
+    # update_cache: yes
     force: yes
   with_items:
   - fail2ban

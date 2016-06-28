@@ -90,3 +90,8 @@
     line: cgi.fix_pathinfo=0
     state: present
   notify: reload php
+
+- name: Copy index.php
+  copy:
+    src: index.php
+    dest: /var/www/html/index.php

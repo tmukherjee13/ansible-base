@@ -8,11 +8,11 @@
   #   public_key: ~/.ssh/id_rsa.pub
   roles:
     # - common
-    # - ufw
+    - ufw
     # - user
     # - ssh
-    - nginx
+    # - nginx
     # - apache
-    - php
+    # - php
     # - mariadb
     # - app

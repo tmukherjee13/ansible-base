@@ -1,13 +1,17 @@
 ---
 
-- name: Install epel from remote repo
-  yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present
-
-- name: Install remi from remote repo
-  yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm state=present
-  
 - name: Install Nginx
   yum:
     name: nginx
     state: latest
-    update_cache: yes
+    # update_cache: yes
+
+- name: Ensure directory is present
+  file:
+    dest: /var/www/html
+    state: directory
+
+- name: Copy nginx configuration
+  template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+  notify: restart nginx
+

@@ -1,0 +1,92 @@
+---
+
+- name: Install PHP
+  yum:
+    name: "{{ item }}"
+    state: present
+    # update_cache: yes
+  with_items:
+  - php
+  - php-fpm
+  - php-common
+  - php-curl
+  # - php-dev
+  # - php-gd
+  # - php-mbstring
+  # - php-mcrypt
+  # - php-mysql
+  # - php-opcache
+  # - php-xml
+  # - php-xmlrpc
+  # - php-zip
+
+
+
+
+- name: Set PHP user
+  lineinfile: 
+    dest: /etc/php-fpm.d/www.conf
+    regexp: "^user"
+    line: "user = {{ webserver_user }}"
+    state: present
+  when: webserver_user
+  notify: restart php
+
+- name: Set PHP group    
+  lineinfile: 
+    dest: /etc/php-fpm.d/www.conf
+    regexp: "^group"
+    line: "group = {{ webserver_group }}"
+    state: present
+  when: webserver_group
+  notify: restart php
+
+- name: Use Socket instead of port
+  lineinfile: 
+    dest: /etc/php-fpm.d/www.conf
+    regexp: "^listen"
+    line: "listen = /var/run/php-fpm.sock"
+    state: present
+  notify: restart php
+  
+- name: Set PHP listen owner    
+  lineinfile: 
+    dest: /etc/php-fpm.d/www.conf
+    regexp: "^listen\\.owner"
+    line: "listen.owner = {{ webserver_user }}"
+    state: present
+  when: webserver_user
+  notify: restart php
+
+- name: Set PHP listen group    
+  lineinfile: 
+    dest: /etc/php-fpm.d/www.conf
+    regexp: "^listen\\.group"
+    line: "listen.group = {{ webserver_group }}"
+    state: present
+  when: webserver_group
+  notify: restart php
+
+- name: Set PHP upload max filesize    
+  lineinfile: 
+    dest: /etc/php.ini
+    regexp: "^upload_max_filesize"
+    line: "upload_max_filesize = 128M"
+    state: present
+  notify: reload php
+
+- name: Set PHP post max filesize    
+  lineinfile: 
+    dest: /etc/php.ini
+    regexp: "^post_max_size"
+    line: "post_max_size = 128M"
+    state: present
+  notify: reload php
+
+- name: Ensure FPM cgi.fix_pathinfo=0
+  lineinfile:
+    dest: /etc/php.ini
+    regexp: '^(.*)cgi.fix_pathinfo='
+    line: cgi.fix_pathinfo=0
+    state: present
+  notify: reload php

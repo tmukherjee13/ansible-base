@@ -1,15 +1,7 @@
 ---
-# - name: Upgrade packages
-#   apt: upgrade=safe
-  
-- name: Install packages
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-    force: yes
-  with_items:
-  - fail2ban
-  - git-core
-  # - redis-server
-  # - ufw
+
+- include: debian.yml
+  when: ansible_distribution == "Ubuntu"
+
+- include: centos.yml
+  when: ansible_distribution == "CentOS"

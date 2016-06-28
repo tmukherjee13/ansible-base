@@ -12,6 +12,7 @@
     # - user
     # - ssh
     - nginx
-    # - php
+    # - apache
+    - php
     # - mariadb
     # - app

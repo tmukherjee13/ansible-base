@@ -2,6 +2,6 @@ username: tarun
 password: InuZ6/HkJkYOA
 public_key: ~/.ssh/id_rsa.pub
 sftp_user: 
-server_hostname: 192.168.1.2
+server_hostname: 192.168.1.4
 webserver_user: 
 webserver_group: 

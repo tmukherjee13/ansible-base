@@ -5,3 +5,7 @@
     state: latest
     force: yes
     update_cache: yes
+
+- name: Copy nginx configuration
+  template: src=default.conf dest=/etc/nginx/sites-available/default
+  notify: restart nginx

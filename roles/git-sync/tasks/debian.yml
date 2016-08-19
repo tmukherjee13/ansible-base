@@ -1,0 +1,26 @@
+---
+# - name: Upgrade packages
+#   apt: upgrade=safe
+  
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    # update_cache: yes
+    force: yes
+  with_items:
+  # - git-core
+  - python-setuptools
+  - python-pip
+  # - redis-server
+  # - ufw
+  # 
+
+- name: Install Web.py
+  command: pip install web.py
+
+- name: Setup Requirements
+  file: dest=~/server-admin state=directory owner=root group=root mode=0755
+
+- name: Setup git sync
+  template: src=deploy.py dest=~/server-admin/deploy.py owner=root group=root mode=0644
